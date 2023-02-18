@@ -1,0 +1,61 @@
+{
+    "Function component": {
+        "prefix": ["fcomp", "comp"],
+        "body": [
+            "import * as React from \"react\";",
+            "",
+            "type TProps = {};",
+            "",
+            "export const ${TM_FILENAME_BASE:COMPONENT} = (p: TProps) => {",
+            "const {} = p;",
+            "return <div>${TM_FILENAME_BASE:COMPONENT} </div>;",
+            "};"
+        ]
+    },
+    "Function component with context": {
+        "prefix": ["compcontext", "cont", "comp"],
+        "body": [
+            "import * as React from \"react\";",
+            "import {createContext, useContext} from \"react\";",
+            "",
+            "type TProps = {};",
+            "export const ${TM_FILENAME_BASE:COMPONENT} = (p: TUse${TM_FILENAME_BASE:COMPONENT}Args & TProps) => {",
+            "const {} = p;",
+            "const ctx = _use${TM_FILENAME_BASE:COMPONENT}(p);",
+            "",
+            "return <${TM_FILENAME_BASE:COMPONENT}Provider value={ctx}>${TM_FILENAME_BASE:COMPONENT}</${TM_FILENAME_BASE:COMPONENT}Provider>;",
+            "};",
+            "",
+            "",
+            "/* In use${TM_FILENAME_BASE:COMPONENT}.ts: */",
+            "export type TUse${TM_FILENAME_BASE:COMPONENT}Args = {};",
+            "export const _use${TM_FILENAME_BASE:COMPONENT} = (args: TUse${TM_FILENAME_BASE:COMPONENT}Args) => {",
+            "   return {",
+            "       ...args,",
+            "   };",
+            "};",
+            "",
+            "export type T${TM_FILENAME_BASE:COMPONENT}Context = ReturnType<typeof _use${TM_FILENAME_BASE:COMPONENT}>;",
+            "",
+            "const errorMessage = \"use${TM_FILENAME_BASE:COMPONENT}Context: `context` is undefined.\";",
+            "",
+            "const c = createContext<T${TM_FILENAME_BASE:COMPONENT}Context>",
+            "   ({",
+            "   name: \"${TM_FILENAME_BASE:COMPONENT}Context\",",
+            "   errorMessage",
+            "});",
+            "",
+            "const ${TM_FILENAME_BASE:COMPONENT}Provider = c.Provider;",
+            "const use${TM_FILENAME_BASE:COMPONENT}Context = () => {",
+            "    const context = useContext(c);",
+            "    if (!context) {",
+            "        throw new Error(errorMessage);",
+            "    }",
+            "",
+            "    return context;",
+            "};",
+            "",
+            "export { ${TM_FILENAME_BASE:COMPONENT}Provider, use${TM_FILENAME_BASE:COMPONENT}Context };"
+        ]
+    }
+}

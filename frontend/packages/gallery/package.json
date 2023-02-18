@@ -1,0 +1,19 @@
+{
+    "name": "@vite-react-boilerplate/gallery",
+    "version": "1.0.0",
+    "private": true,
+    "main": "src/Gallery.tsx",
+    "scripts": {
+        "compile": "tsc",
+        "build": "yarn compile"
+    },
+    "dependencies": {
+        "typescript": "^4.9.4",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0",
+        "antd": "^5.1.1",
+        "date-fns": "^2.29.3",
+        "react-use": "^17.4.0",
+        "react-router-dom": "^6.6.1"
+    }
+}
